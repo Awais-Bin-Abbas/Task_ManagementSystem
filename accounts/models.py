@@ -17,3 +17,10 @@ class User(AbstractUser):
         null=True,
         blank=True
     )
+
+    password_expires_at = models.DateTimeField(null=True, blank=True)
+
+class PasswordResetRequest(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="password_reset_requests")
+    requested_at = models.DateTimeField(auto_now_add=True)
+    is_resolved = models.BooleanField(default=False)

@@ -38,6 +38,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'accounts.middleware.PasswordExpirationMiddleware',
 ]
 
 ROOT_URLCONF = 'taskmanager_api.urls'
@@ -110,3 +111,9 @@ CORS_ALLOW_HEADERS = [
     'x-requested-with',
 ]
 # ──────────────────────────────────────
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'l232574@lhr.nu.edu.pk'  # Replace with your email
+EMAIL_HOST_PASSWORD = 'xjpe wmrs ildd ipmc' # Replace with your app password
