@@ -3,6 +3,7 @@ from django.urls import path, include
 
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from accounts.serializers import CustomTokenObtainPairSerializer
+from accounts.views import ForgotPasswordView, ResetPasswordView, ChangePasswordView, PasswordRequestsView, ResolvePasswordRequestView
 
 
 class CustomTokenObtainPairView(TokenObtainPairView):
@@ -23,6 +24,11 @@ urlpatterns = [
     # =========================
     path('auth/login/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('auth/forgot-password/', ForgotPasswordView.as_view(), name='forgot-password'),
+    path('auth/reset-password/', ResetPasswordView.as_view(), name='reset-password'),
+    path('auth/change-password/', ChangePasswordView.as_view(), name='change-password'),
+    path('auth/password-requests/', PasswordRequestsView.as_view(), name='password-requests'),
+    path('auth/resolve-password-request/', ResolvePasswordRequestView.as_view(), name='resolve-password-request'),
 
     # =========================
     # APPS

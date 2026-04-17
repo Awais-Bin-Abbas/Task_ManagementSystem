@@ -11,6 +11,7 @@ class AnalyticsAPIView(views.APIView):
     def get(self, request):
         total_tasks = Task.objects.count()
         completed_tasks = Task.objects.filter(status="Completed").count()
+        in_progress_tasks = Task.objects.filter(status="In Progress").count()
         overdue_tasks = Task.objects.filter(
             due_date__lt=timezone.now().date(), 
             status__in=["Todo", "In Progress"]
@@ -25,6 +26,7 @@ class AnalyticsAPIView(views.APIView):
         data = {
             "total_tasks": total_tasks,
             "completed_tasks": completed_tasks,
+            "in_progress_tasks": in_progress_tasks,
             "overdue_tasks": overdue_tasks,
             "total_projects": total_projects,
             "active_projects": active_projects,
